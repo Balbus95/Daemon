@@ -1,4 +1,6 @@
 import { useState, useEffect, Component } from 'react';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -279,7 +281,7 @@ export function DaemonDashboard() {
                 <Compass className="w-5 h-5 text-accent" />
                 <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Direction</span>
               </div>
-              <a href="/telos" className="text-sm text-brand hover:underline">View all</a>
+              <a href={`${base}/telos`} className="text-sm text-brand hover:underline">View all</a>
             </div>
             <div className="overflow-y-auto flex-1 pr-1">
               <div className="space-y-2 pb-3">
@@ -489,7 +491,7 @@ export function DaemonDashboard() {
               GitHub
             </a>
             <a
-              href="/api/"
+              href={`${base}/api/`}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary hover:bg-bg-elevated text-text-secondary hover:text-text-primary border border-border-subtle transition-colors text-sm font-mono"
             >
               More <ExternalLink className="w-4 h-4" />

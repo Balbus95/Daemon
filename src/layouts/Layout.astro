@@ -51,7 +51,7 @@ const fontCSS = `
   </head>
   <body class="bg-bg-primary min-h-screen overflow-x-hidden">
     <Background client:load />
-    <Nav client:load />
+    <Nav base={base} client:load />
     <slot />
   </body>
 </html>

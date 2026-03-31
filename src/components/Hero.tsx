@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Terminal, Zap, Globe, MapPin } from 'lucide-react';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 export function Hero() {
   return (
     <section className="relative pt-28 pb-6 px-6">
@@ -76,7 +78,7 @@ export function Hero() {
             <span className="font-mono text-xs text-text-secondary">Open</span>
           </div>
           <a
-            href="/api/"
+            href={`${base}/api/`}
             className="px-4 py-1.5 rounded-lg font-heading font-medium text-xs bg-bg-secondary hover:bg-bg-tertiary text-text-secondary border border-border-subtle transition-all duration-300"
           >
             Connect

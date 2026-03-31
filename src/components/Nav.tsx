@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Terminal, Users, Target, Github } from 'lucide-react';
 
-export function Nav() {
+export function Nav({ base = '' }: { base?: string }) {
   const { scrollY } = useScroll();
   const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.95]);
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 1]);
@@ -27,7 +27,7 @@ export function Nav() {
 
       <div className="relative max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo / Brand */}
-        <a href="/" className="flex items-center gap-3 group">
+        <a href={`${base}/`} className="flex items-center gap-3 group">
           <Terminal className="w-6 h-6 text-brand" />
           <span className="font-heading font-bold text-xl text-text-primary group-hover:text-brand transition-colors">
             DAEMON
@@ -37,14 +37,14 @@ export function Nav() {
         {/* Navigation Links */}
         <div className="flex items-center gap-6">
           <a
-            href="/api"
+            href={`${base}/api`}
             className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-sans text-sm"
           >
             <Users className="w-4 h-4" />
             <span className="hidden sm:inline">Connect</span>
           </a>
           <a
-            href="/telos"
+            href={`${base}/telos`}
             className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-sans text-sm"
           >
             <Target className="w-4 h-4" />
