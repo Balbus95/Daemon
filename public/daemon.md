@@ -10,13 +10,13 @@ Content follows until the next section.
 
 [ABOUT]
 
-My name is Mario Balbi (known online as Balbus). I'm a Computer Science graduate from the University of Salerno (Master's specialization in Cybersecurity, grade 104). I'm a pragmatic developer and creative problem solver with a focus on backend systems, AI/Data Science, and automation.
+My name is Mario Balbi (known online as Balbus). I'm a Computer Science graduate from the University of Salerno (Master's specialization in Cybersecurity). I'm a pragmatic developer and creative problem solver with a focus on backend systems, cybersecurity, and AI/Data Science.
 
 My technical approach is rooted in reverse thinking and a natural curiosity for how complex systems work. I prioritize architectural quality, performance, and efficiency — with a particular drive for optimizing existing systems and removing friction wherever I find it.
 
 [CURRENT_LOCATION]
 
-Camerota, Salerno — Italy
+Fisciano, Salerno — Italy
 
 [MISSION]
 

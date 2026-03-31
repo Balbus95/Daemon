@@ -54,7 +54,7 @@ export function Hero() {
         >
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand/10 border border-brand/30">
             <MapPin className="w-3.5 h-3.5 text-brand" />
-            <span className="font-mono text-xs text-brand">Camerota, Salerno — Italy</span>
+            <span className="font-mono text-xs text-brand">Fisciano, Salerno — Italy</span>
           </div>
         </motion.div>
 
@@ -67,7 +67,7 @@ export function Hero() {
         >
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
             <Terminal className="w-3.5 h-3.5 text-text-tertiary" />
-            <span className="font-mono text-xs text-text-secondary">Backend + AI</span>
+            <span className="font-mono text-xs text-text-secondary">Cyber · Backend · AI</span>
           </div>
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
             <Zap className="w-3.5 h-3.5 text-success" />

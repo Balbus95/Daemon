@@ -1,15 +1,18 @@
 ---
-import '../styles/global.css'
-import { Background } from '../components/Background';
-import { Nav } from '../components/Nav';
+import "../styles/global.css";
+import { Background } from "../components/Background";
+import { Nav } from "../components/Nav";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Personal daemon and portfolio for Mario Balbi — Backend Developer & AI/Data Scientist based in Italy.' } = Astro.props;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const {
+  title,
+  description = "Personal daemon and portfolio for Mario Balbi — Cyber | Backend | AI based in Italy.",
+} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const f = `${base}/fonts/`;
 const fontCSS = `
   @font-face { font-family: 'Concourse'; src: url('${f}concourse_3_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }

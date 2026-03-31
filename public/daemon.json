@@ -1,5 +1,5 @@
 {
-  "about": "I'm Mario Balbi (known online as Balbus), a Computer Science graduate from the University of Salerno (Master's in Cybersecurity, grade 104). I'm a pragmatic developer and creative problem solver with a deep focus on backend systems, AI/Data Science, and automation. My technical approach is rooted in reverse thinking — I like to understand how things work before deciding how to fix or improve them.",
+  "about": "I'm Mario Balbi (known online as Balbus), a Computer Science graduate from the University of Salerno (Master's in Cybersecurity). I'm a pragmatic developer and creative problem solver with a focus on backend systems, cybersecurity, and AI/Data Science. My technical approach is rooted in reverse thinking — I like to understand how things work before deciding how to fix or improve them.",
   "mission": "Build automation tools that remove real friction from daily workflows. Apply AI and data science for practical, transparent utility — not black-box magic. Master backend engineering at scale and contribute to cybersecurity research. Craft software that is not just functional, but measurably efficient.",
   "telos": [
     "P1: Unnecessary complexity slows systems down — performance should be a first-class concern, not an afterthought",
@@ -12,7 +12,7 @@
     "G2: Build and maintain open-source tools that solve real problems for developers",
     "G3: Achieve mastery of distributed systems, performance engineering, and AI integration at scale"
   ],
-  "current_location": "Camerota, Salerno — Italy",
+  "current_location": "Fisciano, Salerno — Italy",
   "preferences": [
     "Languages: Python, Java, TypeScript, Go (learning Rust)",
     "Editor: VS Code with Vim keybindings",
@@ -104,9 +104,5 @@
       "Face Segmentation — BiSeNet + FAN for periocular region analysis",
       "Nebula CTF — Linux privilege escalation research and hardening"
     ]
-  },
-  "last_updated": "2026-03-30",
-  "sync_status": {
-    "daemon_md": "static"
   }
 }

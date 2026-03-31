@@ -48,11 +48,6 @@ interface DaemonData {
     personal?: string[];
   };
 
-  // Metadata
-  last_updated?: string;
-  sync_status?: {
-    daemon_md?: string;
-  };
 }
 
 /**
@@ -139,7 +134,6 @@ function StatusBar({
       </div>
       <div className="flex items-center gap-4 text-text-tertiary font-mono text-xs">
         <span>{sectionCount} sections</span>
-        {lastUpdated && <span>Updated: {new Date(lastUpdated).toLocaleDateString()}</span>}
         <span>{currentTime.toISOString().slice(0, 10)}</span>
       </div>
     </motion.div>
@@ -243,7 +237,6 @@ export function DaemonDashboard() {
         isConnected={isConnected}
         sectionCount={sectionCount}
         currentTime={currentTime}
-        lastUpdated={daemonData.last_updated}
       />
 
       {/* TIER 1: Core Purpose - 2 Columns */}
@@ -470,7 +463,7 @@ export function DaemonDashboard() {
             <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Connect</span>
           </div>
           <code className="font-mono text-base text-brand block mb-1">mariobalbi95@gmail.com</code>
-          <p className="text-sm text-text-tertiary mb-4">Open to backend engineering &amp; AI/data roles</p>
+          <p className="text-sm text-text-tertiary mb-4">Open to backend, cybersecurity &amp; AI/data roles</p>
           <div className="flex items-center justify-center gap-3">
             <a
               href="https://www.linkedin.com/in/mariobalbi95"
