@@ -1,4 +1,4 @@
-name = "daemon"
+name = "daemon-balbus"
 main = "src/worker.ts"
 compatibility_date = "2025-08-20"
 workers_dev = true
@@ -9,10 +9,10 @@ enabled = false
 [observability.logs]
 enabled = false
 
-# Custom domain route
-routes = [
-  { pattern = "daemon.danielmiessler.com", custom_domain = true }
-]
+# Custom domain — set this to your own domain when deploying
+# routes = [
+#   { pattern = "daemon.yourdomain.com", custom_domain = true }
+# ]
 
 [site]
 bucket = "./dist"

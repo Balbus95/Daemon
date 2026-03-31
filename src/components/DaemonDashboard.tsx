@@ -10,17 +10,17 @@ import {
   Settings,
   Clock,
   Briefcase,
-  Server,
+  Mail,
   Loader2,
   AlertCircle,
   RefreshCw,
-  ExternalLink
+  ExternalLink,
+  Github,
+  Linkedin
 } from 'lucide-react';
 
 /**
  * Daemon Data Interface
- * Matches the schema from daemon-mcp/schema/daemon.types.ts
- * NO placeholder data - only what the API provides
  */
 interface DaemonData {
   // Core Identity
@@ -88,16 +88,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
-/**
- * Safe text renderer - handles undefined/null gracefully
- */
 function SafeText({ text, fallback = 'Not available' }: { text?: string; fallback?: string }) {
   return <>{text || fallback}</>;
 }
 
-/**
- * Safe list renderer - handles undefined/null/empty arrays
- */
 function SafeList({
   items,
   fallback = 'No items available',
@@ -117,12 +111,12 @@ function SafeList({
 
 function StatusBar({
   isConnected,
-  toolCount,
+  sectionCount,
   currentTime,
   lastUpdated
 }: {
   isConnected: boolean;
-  toolCount: number;
+  sectionCount: number;
   currentTime: Date;
   lastUpdated?: string;
 }) {
@@ -133,16 +127,16 @@ function StatusBar({
       className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border-default bg-bg-secondary/80 backdrop-blur-sm px-4 py-3 mb-6"
     >
       <div className="flex items-center gap-4">
-        <span className="font-mono font-bold text-sm text-accent">DAEMON://MIESSLER</span>
+        <span className="font-mono font-bold text-sm text-accent">DAEMON://BALBUS</span>
         <div className="flex items-center gap-2">
           <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-success animate-pulse-slow' : 'bg-error'}`} />
           <span className="font-mono text-xs text-text-secondary">
-            {isConnected ? 'CONNECTED' : 'OFFLINE'}
+            {isConnected ? 'LOADED' : 'OFFLINE'}
           </span>
         </div>
       </div>
       <div className="flex items-center gap-4 text-text-tertiary font-mono text-xs">
-        <span>{toolCount} endpoints</span>
+        <span>{sectionCount} sections</span>
         {lastUpdated && <span>Updated: {new Date(lastUpdated).toLocaleDateString()}</span>}
         <span>{currentTime.toISOString().slice(0, 10)}</span>
       </div>
@@ -156,7 +150,7 @@ export function DaemonDashboard() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [daemonData, setDaemonData] = useState<DaemonData>({});
-  const [toolCount, setToolCount] = useState(0);
+  const [sectionCount, setSectionCount] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -169,43 +163,26 @@ export function DaemonDashboard() {
     setError(null);
 
     try {
-      const toolsResponse = await fetch('https://mcp.daemon.danielmiessler.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', method: 'tools/list', id: 1 })
-      });
-
-      if (toolsResponse.ok) {
-        const toolsData = await toolsResponse.json();
-        setToolCount(toolsData.result?.tools?.length || 0);
-      }
-
-      const dataResponse = await fetch('https://mcp.daemon.danielmiessler.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          jsonrpc: '2.0',
-          method: 'tools/call',
-          params: { name: 'get_all', arguments: {} },
-          id: 2
-        })
-      });
-
-      if (dataResponse.ok) {
-        const response = await dataResponse.json();
-        if (response.result?.content?.[0]?.text) {
-          const data = JSON.parse(response.result.content[0].text);
-          setDaemonData(data);
-          setIsConnected(true);
-        } else {
-          throw new Error('Invalid response format');
-        }
-      } else {
-        throw new Error(`HTTP ${dataResponse.status}`);
-      }
+      const response = await fetch(`${import.meta.env.BASE_URL}daemon.json`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data: DaemonData = await response.json();
+      setDaemonData(data);
+      const count = [
+        data.about,
+        data.mission,
+        data.telos,
+        data.favorite_books,
+        data.favorite_movies,
+        data.predictions,
+        data.preferences,
+        data.daily_routine,
+        data.projects
+      ].filter(Boolean).length;
+      setSectionCount(count);
+      setIsConnected(true);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Unknown error';
-      setError(`Connection failed: ${message}`);
+      setError(`Failed to load data: ${message}`);
       setIsConnected(false);
     } finally {
       setLoading(false);
@@ -221,11 +198,9 @@ export function DaemonDashboard() {
     return item.replace(/^[PMG]\d+:\s*/, '');
   }
 
-  // Parse telos - can be string or array
   function getTelosItems(): string[] {
     if (!daemonData.telos) return [];
     if (Array.isArray(daemonData.telos)) return daemonData.telos;
-    // If it's a string, split by newlines (backward compat)
     return daemonData.telos.split('\n').filter(Boolean);
   }
 
@@ -234,7 +209,7 @@ export function DaemonDashboard() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col items-center justify-center py-20 gap-4">
           <Loader2 className="w-8 h-8 text-brand animate-spin" />
-          <p className="font-mono text-sm text-text-secondary">Establishing MCP connection...</p>
+          <p className="font-mono text-sm text-text-secondary">Loading daemon data...</p>
         </div>
       </div>
     );
@@ -264,7 +239,7 @@ export function DaemonDashboard() {
     <div className="max-w-6xl mx-auto px-6 space-y-4">
       <StatusBar
         isConnected={isConnected}
-        toolCount={toolCount}
+        sectionCount={sectionCount}
         currentTime={currentTime}
         lastUpdated={daemonData.last_updated}
       />
@@ -291,7 +266,7 @@ export function DaemonDashboard() {
           </motion.div>
         </ErrorBoundary>
 
-        {/* TELOS */}
+        {/* Direction / TELOS */}
         <ErrorBoundary>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -302,7 +277,7 @@ export function DaemonDashboard() {
             <div className="flex items-center justify-between mb-3 shrink-0">
               <div className="flex items-center gap-2">
                 <Compass className="w-5 h-5 text-accent" />
-                <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">TELOS Framework</span>
+                <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Direction</span>
               </div>
               <a href="/telos" className="text-sm text-brand hover:underline">View all</a>
             </div>
@@ -316,7 +291,7 @@ export function DaemonDashboard() {
                     </div>
                   ))
                 ) : (
-                  <p className="text-sm text-text-tertiary italic">TELOS not available</p>
+                  <p className="text-sm text-text-tertiary italic">Direction not available</p>
                 )}
               </div>
             </div>
@@ -360,13 +335,13 @@ export function DaemonDashboard() {
             <div className="flex items-center justify-between mb-3 shrink-0">
               <div className="flex items-center gap-2">
                 <Film className="w-5 h-5 text-text-tertiary" />
-                <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Movies</span>
+                <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Films & Series</span>
               </div>
               <span className="text-xs text-text-tertiary">{daemonData.favorite_movies?.length || 0}</span>
             </div>
             <div className="overflow-y-auto flex-1 pr-1">
               <div className="space-y-2 pb-3">
-                <SafeList items={daemonData.favorite_movies} fallback="No movies listed" />
+                <SafeList items={daemonData.favorite_movies} fallback="No films listed" />
               </div>
             </div>
           </motion.div>
@@ -480,7 +455,7 @@ export function DaemonDashboard() {
         </ErrorBoundary>
       </div>
 
-      {/* TIER 4: API Access - Centered Footer */}
+      {/* TIER 4: Connect - Centered Footer */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -489,17 +464,37 @@ export function DaemonDashboard() {
       >
         <div className="rounded-xl border border-border-subtle bg-bg-tertiary/50 backdrop-blur-sm p-6 max-w-md w-full text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Server className="w-5 h-5 text-text-tertiary" />
-            <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">API Access</span>
+            <Mail className="w-5 h-5 text-text-tertiary" />
+            <span className="font-mono text-sm font-semibold tracking-wider text-text-tertiary uppercase">Connect</span>
           </div>
-          <code className="font-mono text-base text-brand block mb-3">mcp.daemon.danielmiessler.com</code>
-          <p className="text-sm text-text-tertiary mb-4">Connect your AI assistant directly</p>
-          <a
-            href="/api/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary hover:bg-bg-elevated text-text-secondary hover:text-text-primary border border-border-subtle transition-colors text-sm font-mono"
-          >
-            View API Docs <ExternalLink className="w-4 h-4" />
-          </a>
+          <code className="font-mono text-base text-brand block mb-1">mariobalbi95@gmail.com</code>
+          <p className="text-sm text-text-tertiary mb-4">Open to backend engineering &amp; AI/data roles</p>
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href="https://www.linkedin.com/in/mariobalbi95"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary hover:bg-bg-elevated text-text-secondary hover:text-text-primary border border-border-subtle transition-colors text-sm font-mono"
+            >
+              <Linkedin className="w-4 h-4" />
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/Balbus95"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary hover:bg-bg-elevated text-text-secondary hover:text-text-primary border border-border-subtle transition-colors text-sm font-mono"
+            >
+              <Github className="w-4 h-4" />
+              GitHub
+            </a>
+            <a
+              href="/api/"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary hover:bg-bg-elevated text-text-secondary hover:text-text-primary border border-border-subtle transition-colors text-sm font-mono"
+            >
+              More <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </div>

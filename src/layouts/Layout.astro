@@ -8,7 +8,22 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Personal MCP API - Real-time access to Daniel Miessler\'s daemon data' } = Astro.props;
+const { title, description = 'Personal daemon and portfolio for Mario Balbi — Backend Developer & AI/Data Scientist based in Italy.' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const f = `${base}fonts/`;
+const fontCSS = `
+  @font-face { font-family: 'Concourse'; src: url('${f}concourse_3_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Concourse'; src: url('${f}concourse_3_bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Concourse Medium'; src: url('${f}concourse_4_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Concourse Medium'; src: url('${f}concourse_4_bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Valkyrie'; src: url('${f}valkyrie_a_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Valkyrie'; src: url('${f}valkyrie_a_bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Valkyrie'; src: url('${f}valkyrie_a_italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Advocate'; src: url('${f}advocate_34_narr_reg.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Advocate Wide'; src: url('${f}advocate_54_wide_reg.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Heliotrope'; src: url('${f}heliotrope_3_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Heliotrope Caps'; src: url('${f}heliotrope_3_caps_regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+`;
 ---
 
 <!doctype html>
@@ -17,22 +32,21 @@ const { title, description = 'Personal MCP API - Real-time access to Daniel Mies
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
+    <link rel="icon" type="image/png" href={`${base}favicon.png`} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://daemon.danielmiessler.com/og-image.png" />
-    <meta property="og:url" content="https://daemon.danielmiessler.com" />
+    <meta property="og:image" content={`${base}og-image.png`} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://daemon.danielmiessler.com/og-image.png" />
-
+    <meta name="twitter:image" content={`${base}og-image.png`} />
+    <Fragment set:html={`<style>${fontCSS}</style>`} />
     <title>{title}</title>
   </head>
   <body class="bg-bg-primary min-h-screen overflow-x-hidden">

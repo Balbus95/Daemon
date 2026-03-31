@@ -1,5 +1,8 @@
-# dependencies (bun install)
+# dependencies
 node_modules
+
+# astro generated
+.astro
 
 # output
 out

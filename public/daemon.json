@@ -1,0 +1,112 @@
+{
+  "about": "I'm Mario Balbi (known online as Balbus), a Computer Science graduate from the University of Salerno (Master's in Cybersecurity, grade 104). I'm a pragmatic developer and creative problem solver with a deep focus on backend systems, AI/Data Science, and automation. My technical approach is rooted in reverse thinking — I like to understand how things work before deciding how to fix or improve them.",
+  "mission": "Build automation tools that remove real friction from daily workflows. Apply AI and data science for practical, transparent utility — not black-box magic. Master backend engineering at scale and contribute to cybersecurity research. Craft software that is not just functional, but measurably efficient.",
+  "telos": [
+    "P1: Unnecessary complexity slows systems down — performance should be a first-class concern, not an afterthought",
+    "P2: Automation potential goes unrealized — too much time is spent on repetitive tasks that computers should handle",
+    "P3: AI and ML remain inaccessible to most developers — the gap between research and practical tools is too wide",
+    "M1: Build tools that demonstrably save time and remove friction from developer and user workflows",
+    "M2: Apply Explainable AI to make data science results transparent, trustworthy, and production-ready",
+    "M3: Bridge backend engineering and AI/ML systems — from architecture to deployment",
+    "G1: Land a role at the intersection of backend engineering and AI/data science",
+    "G2: Build and maintain open-source tools that solve real problems for developers",
+    "G3: Achieve mastery of distributed systems, performance engineering, and AI integration at scale"
+  ],
+  "current_location": "Camerota, Salerno — Italy",
+  "preferences": [
+    "Languages: Python, Java, TypeScript, Go (learning Rust)",
+    "Editor: VS Code with Vim keybindings",
+    "OS: Windows + Linux (Proxmox homelab)",
+    "Coffee: Espresso — Italian style, no exceptions",
+    "Music: Rock/Punk/Metal roots (Pink Floyd, Queen, Metallica, Green Day) — Italian Hip-Hop (Caparezza, Salmo, J-AX) — Italian songwriters (De André, Guccini, Dalla) — lo-fi, jazz/swing, classical & orchestral (Zimmer, Morricone) for coding",
+    "Work style: Deep focus blocks, reverse-engineer first, automate everything",
+    "Hardware: Mechanical keyboards, retrogaming, vintage tech",
+    "Gaming: FPS, MMORPG, Racing, Arcade — Dark Souls, Deep Rock Galactic, WoW, Binding of Isaac, Resident Evil, NFS",
+    "Comics & Manga: Dylan Dog, Tex, Japanese manga/anime, American graphic novels",
+    "Board games: Chess, Mahjong, D&D, Bang!, Ticket to Ride, 7 Wonders, Carcassonne",
+    "Values: Efficiency, curiosity, craftsmanship, practical utility"
+  ],
+  "daily_routine": [
+    "Morning: Coffee, 1–2h deep work block",
+    "Coding: Reverse engineer first, then build — understand the system",
+    "Afternoon: Feature development, debugging, code review",
+    "Evening: Homelab experiments, side projects, gaming",
+    "Night: Reading, lo-fi coding sessions, learning new concepts",
+    "Physical: Gym 3–4x/week, swimming, yoga — future goal: Kung Fu"
+  ],
+  "favorite_books": [
+    "\"1984\" by George Orwell",
+    "\"The Boy with the Cuckoo-Clock Heart\" by Mathias Malzieu",
+    "\"When Nietzsche Wept\" by Irvin D. Yalom",
+    "\"Wherever You Go, There You Are\" by Jon Kabat-Zinn",
+    "\"A Field Guide to Lucid Dreaming\" by Tuccillo, Zeisel & Peisel",
+    "\"Dreaming Yourself Awake\" by B. Alan Wallace",
+    "\"The Teachings of Don Juan\" by Carlos Castaneda",
+    "\"Autobiography of a Yogi\" by Paramahansa Yogananda"
+  ],
+  "favorite_movies": [
+    "The Matrix",
+    "Inception",
+    "Interstellar",
+    "The Truman Show",
+    "The Dark Knight",
+    "A Clockwork Orange",
+    "Trainspotting",
+    "Breaking Bad (series)",
+    "The Lord of the Rings trilogy",
+    "Game of Thrones",
+    "Star Wars saga",
+    "Pulp Fiction",
+    "Kill Bill",
+    "Inglourious Basterds",
+    "Back to the Future trilogy",
+    "The Karate Kid",
+    "Mission Impossible",
+    "The Conjuring / The Exorcist / Saw / Friday the 13th / A Nightmare on Elm Street (horror)",
+    "Edward Scissorhands / The Nightmare Before Christmas (Tim Burton)",
+    "Disney / Pixar / DreamWorks animation classics",
+    "The Simpsons",
+    "Family Guy",
+    "Rick & Morty"
+  ],
+  "favorite_podcasts": [
+    "Meditation & mindfulness",
+    "Lucid dreaming & consciousness",
+    "Humor & comedy",
+    "Science entertainment",
+    "Animals & nature"
+  ],
+  "predictions": [
+    "AI will automate most boilerplate backend code within 2–3 years (Almost Certain)",
+    "Cybersecurity will become the most critical engineering discipline as AI scales (Almost Certain)",
+    "Explainable AI will be legally required in regulated industries by 2027 (Probable)",
+    "Open-source LLMs will match closed-source frontier models within 12 months (Almost Certain)",
+    "Every serious developer will run a personal homelab by 2030 (Probable)"
+  ],
+  "projects": {
+    "technical": [
+      "ZeekXAI — Cyberattack detection with Explainable AI (Master's Thesis 2025)",
+      "GuitarGuru — Real-time CNN chord recognition, Flutter + FastAPI",
+      "NLP Filter Code — LLM-based IFTTT filter code generation pipeline",
+      "PRIMIS — Backend Java dev on enterprise healthcare management system",
+      "EvoFolio — Portfolio optimization via genetic algorithms (published)",
+      "Book Store DApp — Decentralized e-book marketplace on Ethereum (Solidity, Truffle)",
+      "Bioinformatics NSGA-II — Multi-objective sequence alignment optimization (Python, DEAP)",
+      "Star Wars Interaction Analysis — Graph data analysis with Neo4j and Node.js"
+    ],
+    "creative": [
+      "Homelab — Proxmox VE + NAS + WireGuard VPN + Pi-hole + Home Assistant",
+      "3D Printing — CAD modeling in Blender/AutoCAD, hardware mods",
+      "Retrogaming — Hardware restoration, emulation, vintage peripherals"
+    ],
+    "personal": [
+      "Daemon — This site: live public profile and daemon for AI context",
+      "Face Segmentation — BiSeNet + FAN for periocular region analysis",
+      "Nebula CTF — Linux privilege escalation research and hardening"
+    ]
+  },
+  "last_updated": "2026-03-30",
+  "sync_status": {
+    "daemon_md": "static"
+  }
+}
