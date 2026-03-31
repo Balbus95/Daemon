@@ -163,7 +163,7 @@ export function DaemonDashboard() {
     setError(null);
 
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}daemon.json`);
+      const response = await fetch(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/daemon.json`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: DaemonData = await response.json();
       setDaemonData(data);
