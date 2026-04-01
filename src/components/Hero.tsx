@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Zap, Globe, MapPin } from 'lucide-react';
+import { Terminal, Lock, Cpu, Activity, MapPin } from 'lucide-react';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -67,15 +67,19 @@ export function Hero() {
         >
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
             <Terminal className="w-3.5 h-3.5 text-text-tertiary" />
-            <span className="font-mono text-xs text-text-secondary">Cyber · Backend · AI</span>
+            <span className="font-mono text-xs text-text-secondary">Backend</span>
           </div>
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
-            <Zap className="w-3.5 h-3.5 text-success" />
-            <span className="font-mono text-xs text-text-secondary">Real-time</span>
+            <Lock className="w-3.5 h-3.5 text-accent" />
+            <span className="font-mono text-xs text-text-secondary">Cybersecurity</span>
           </div>
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
-            <Globe className="w-3.5 h-3.5 text-accent" />
-            <span className="font-mono text-xs text-text-secondary">Open</span>
+            <Cpu className="w-3.5 h-3.5 text-brand" />
+            <span className="font-mono text-xs text-text-secondary">AI / Data</span>
+          </div>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
+            <Activity className="w-3.5 h-3.5 text-success" />
+            <span className="font-mono text-xs text-text-secondary">Live</span>
           </div>
           <a
             href={`${base}/api/`}
