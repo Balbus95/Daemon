@@ -2,7 +2,7 @@
   <img src="public/favicon.png" alt="Daemon" width="120">
 </p>
 
-<h1 align="center">Daemon — Mario Balbi</h1>
+<h1 align="center">Daemon</h1>
 
 <p align="center">
   <strong>A live public profile and context layer for AI systems and humans</strong>
@@ -21,6 +21,7 @@
 A **Daemon** is a public personal profile designed to be read by both humans and AI systems. It exposes structured information about who I am, what I build, and what drives me — always accessible, always up to date.
 
 Think of it as a living business card:
+
 - **For humans**: A clean site showing my background, projects, and direction
 - **For AI systems**: A structured [`/daemon.json`](https://balbus95.github.io/Daemon/daemon.json) endpoint with all my data
 
